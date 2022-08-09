@@ -13,15 +13,16 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.stringContainsInOrder;
 
 // 3 -classe
 
 public class Pet {
 
 // 3.1- atributos
-    String uri = "https://petstore.swagger.io/v2/pet"; //endereÃ§o entidade pet
+    String uri = "https://petstore.swagger.io/v2/pet"; //endereço entidade pet
 
-    // 3.2- metodos e funÃ§Ãµes
+    // 3.2- metodos e funções
 
 
 public String lerJson(String caminhoJson) throws IOException {
@@ -34,7 +35,7 @@ public String lerJson(String caminhoJson) throws IOException {
 
    // incluir -  criar - post
 
-    @Test // identifica funÃ§Ã£o como um teste para o testng
+    @Test(priority = 1) // identifica função como um teste para o testng
     public void incluirPet () throws IOException   {
      String JsonBody = lerJson (  "db/pet1.json");
 
@@ -56,7 +57,7 @@ public String lerJson(String caminhoJson) throws IOException {
                .body("name", is ("Jymy"))
                .body("status", is("available"))
                .body("category.name", is ("cat"))
-               .body( "tags.name", contains("sta") )
+               .body( "tags.name", contains("token") )
 
 
        ;
@@ -67,9 +68,10 @@ public String lerJson(String caminhoJson) throws IOException {
 
     //novo metodo
 
-@Test
+@Test(priority = 2)
  public void consultarPet(){
      String petId = "9223372036854060687";
+     String token =
 
      given()
              .contentType(("aplication/json"))
@@ -83,11 +85,11 @@ public String lerJson(String caminhoJson) throws IOException {
              .body("name", is ("Jymy"))
              .body("category.name", is ("cat"))
              .body("status", is("available"))
+     .extract()
+             .path("category.name")
+     ;
 
-
- ;
-
-
+    System.out.println(" Seu soken gerado è: "+ token );
 
 
  }

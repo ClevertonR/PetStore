@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="petstore.Pet" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-09T18:21:34" hostname="NO27-DESENV" time="4.676">
+<testsuite name="petstore.Pet" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-08-09T19:36:53" hostname="NO27-DESENV" time="6.85">
   <properties/>
-  <testcase name="consultarPet" classname="petstore.Pet" time="4.676"/>
-  <system-out><![CDATA[Request method:	GET
-Request URI:	https://petstore.swagger.io/v2/pet/9223372036854060687
+  <testcase name="incluirPet" classname="petstore.Pet" time="5.732"/>
+  <testcase name="consultarPet" classname="petstore.Pet" time="1.11"/>
+  <system-out><![CDATA[Request method:	POST
+Request URI:	https://petstore.swagger.io/v2/pet
 Proxy:			<none>
 Request params:	<none>
 Query params:	<none>
 Form params:	<none>
 Path params:	<none>
 Headers:		Accept=*/*
-				Content-Type=aplication/json; charset=ISO-8859-1
+				Content-Type=application/Json; charset=UTF-8
 Cookies:		<none>
 Multiparts:		<none>
-Body:			<none>
+Body:
+{
+    "id": 9223372036854060687,
+    "category": {
+        "id": 1,
+        "name": "cat"
+    },
+    "name": "Jymy",
+    "photoUrls": [
+        "string"
+    ],
+    "tags": [
+        {
+            "id": 2022,
+            "name": "token"
+        }
+    ],
+    "status": "available"
+}
 HTTP/1.1 200 OK
-Date: Tue, 09 Aug 2022 18:21:47 GMT
+Date: Tue, 09 Aug 2022 19:37:07 GMT
 Content-Type: application/json
 Transfer-Encoding: chunked
 Connection: keep-alive
@@ -37,11 +56,52 @@ Server: Jetty(9.2.9.v20150224)
     "tags": [
         {
             "id": 2022,
-            "name": "sta"
+            "name": "token"
         }
     ],
     "status": "available"
 }
+Request method:	GET
+Request URI:	https://petstore.swagger.io/v2/pet/9223372036854060687
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=aplication/json; charset=ISO-8859-1
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+HTTP/1.1 200 OK
+Date: Tue, 09 Aug 2022 19:37:10 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, DELETE, PUT
+Access-Control-Allow-Headers: Content-Type, api_key, Authorization
+Server: Jetty(9.2.9.v20150224)
+
+{
+    "id": 9223372036854060687,
+    "category": {
+        "id": 1,
+        "name": "cat"
+    },
+    "name": "Jymy",
+    "photoUrls": [
+        "string"
+    ],
+    "tags": [
+        {
+            "id": 2022,
+            "name": "token"
+        }
+    ],
+    "status": "available"
+}
+ Seu soken gerado è: cat
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
