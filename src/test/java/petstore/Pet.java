@@ -3,12 +3,16 @@
 package petstore;
 // 2- bibliotecas
 
+import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.isA;
+import static org.hamcrest.Matchers.contains;
 
 // 3 -classe
 
@@ -38,17 +42,22 @@ public String lerJson(String caminhoJson) throws IOException {
      // dado - quando - entao
      // given - when - then
 
-       given()
+       given() // dado
               .contentType("application/Json" )
               .log().all()
               .body(JsonBody)
 
-       .when()
+       .when() // quando
               .post(uri)
 
-       .then()
+       .then()//entao
                .log().all()
                .statusCode(200)
+               .body("name", is ("Jymy"))
+               .body("status", is("available"))
+               .body("category.name", is ("cat"))
+               .body( "tags.name", contains("sta") )
+
 
        ;
 
