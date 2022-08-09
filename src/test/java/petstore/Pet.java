@@ -85,6 +85,7 @@ public String lerJson(String caminhoJson) throws IOException {
              .body("name", is ("Jymy"))
              .body("category.name", is ("cat"))
              .body("status", is("available"))
+
      .extract()
              .path("category.name")
      ;
@@ -93,5 +94,35 @@ public String lerJson(String caminhoJson) throws IOException {
 
 
  }
+    //Alterar
+    @Test(priority = 3)
+
+    public void alterarPet () throws IOException   {
+        String JsonBody = lerJson (  "db/pet2.json");
+
+        given() // alterar
+                .contentType("application/Json" )
+                .log().all()
+                .body(JsonBody)
+        .when()
+                .put(uri)
+
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("name", is ("Jymy"))
+                .body("status", is("Vendido"))
+
+                .extract()
+                .path("category.name")
+        ;
+
+        System.out.println("Este Pet esta:" + "Vendido" );
+
+
+
+
+
+}
 
 }
