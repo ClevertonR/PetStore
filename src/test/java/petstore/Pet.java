@@ -65,6 +65,31 @@ public String lerJson(String caminhoJson) throws IOException {
 
     }
 
+    //novo metodo
 
+@Test
+ public void consultarPet(){
+     String petId = "9223372036854060687";
+
+     given()
+             .contentType(("aplication/json"))
+             .log().all()
+     .when()
+             .get(uri + "/" + petId )
+
+     .then()
+             .log().all()
+             .statusCode(200)
+             .body("name", is ("Jymy"))
+             .body("category.name", is ("cat"))
+             .body("status", is("available"))
+
+
+ ;
+
+
+
+
+ }
 
 }
